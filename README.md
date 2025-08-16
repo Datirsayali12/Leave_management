@@ -74,16 +74,16 @@ To get started with this repository, follow these steps:
 **Frontend Using streamlit**
 
 ## Add Employee API
-![Add Employee API Screenshot](https://github.com/Datirsayali12/Leave_managment_app/blob/main/screenshot/add_emp.png)
+![Add Employee API Screenshot](https://github.com/Datirsayali12/Leave_management/blob/main/mini_leave_managment/screenshot/add_emp.png)
 
 ## Apply Leave API
-![Apply Leave API Screenshot](https://github.com/Datirsayali12/Leave_managment_app/blob/main/screenshot/apply_for_leave.png)
+![Apply Leave API Screenshot](https://github.com/Datirsayali12/Leave_management/blob/main/mini_leave_managment/screenshot/apply_for_leave.png)
 
 ## Approve/Reject Leave API 
-![Approve/Reject Leave API Screenshot](https://github.com/Datirsayali12/Leave_managment_app/blob/main/screenshot/approve_or_reject_leave.png)
+![Approve/Reject Leave API Screenshot](https://github.com/Datirsayali12/Leave_management/blob/main/mini_leave_managment/screenshot/approve_or_reject_leave.png)
 
 ## Leave Balance
-![Leave Balance API Screenshot](https://github.com/Datirsayali12/Leave_managment_app/blob/main/screenshot/leave_balance.png)
+![Leave Balance API Screenshot](https://github.com/Datirsayali12/Leave_management/blob/main/mini_leave_managment/screenshot/leave_balance.png)
 
 
 ## Potential Improvements
