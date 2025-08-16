@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "ccf1d3b9-dc69-46db-a825-5043431197f6",
+		"name": "leave_managment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30243433",
+		"_collection_link": "https://dark-meadow-856120.postman.co/workspace/Sprint~98b82da3-53d2-4139-a9c8-2b851c2b62c0/collection/30243433-ccf1d3b9-dc69-46db-a825-5043431197f6?action=share&source=collection_link&creator=30243433"
+	},
+	"item": [
+		{
+			"name": "Apply for Leave",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"employee_id\": 4,\n    \"start_date\": \"2025-08-19\",\n    \"end_date\": \"2025-08-27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/apply-leave",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"apply-leave"
+					]
+				},
+				"description": "### Apply Leave API\n\nThis endpoint allows employees to submit a leave application by providing their employee ID and the dates for which they are requesting leave.\n\n#### Request\n\n- **Method**: POST\n    \n- **URL**: `http://127.0.0.1:5000/apply-leave`\n    \n- **Content-Type**: application/json\n    \n\n#### Request Body Parameters\n\n- `employee_id` (integer): The unique identifier for the employee applying for leave.\n    \n- `start_date` (string): The start date of the leave in the format `YYYY-MM-DD`.\n    \n- `end_date` (string): The end date of the leave in the format `YYYY-MM-DD`.\n    \n\n#### Example Request Body\n\n``` json\n{\n  \"employee_id\": 1,\n  \"start_date\": \"2025-08-15\",\n  \"end_date\": \"2025-08-18\"\n}\n\n ```\n\n#### Expected Response\n\nUpon successful submission of the leave application, the API will respond with a confirmation message indicating the status of the leave application. The response typically includes:\n\n- A success message confirming that the leave has been applied.\n    \n- Any relevant details regarding the application status.\n    \n\n#### Notes\n\n- Ensure that the provided dates do not overlap with any existing leave records for the employee.\n    \n- Validate that the employee ID corresponds to an active employee in the system.\n    \n- This endpoint is crucial for managing employee leave requests efficiently."
+			},
+			"response": [
+				{
+					"name": "Apply for Leave",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"employee_id\": 4,\n    \"start_date\": \"2025-08-19\",\n    \"end_date\": \"2025-08-27\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/apply-leave",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"apply-leave"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.12.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 16 Aug 2025 02:46:26 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "84"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"days_requested\": 9,\n    \"leave_id\": 16,\n    \"message\": \"Leave request submitted\"\n}"
+				}
+			]
+		},
+		{
+			"name": "add_new_employee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Sayali Datir\",\n    \"joining_date\": \"2025-08-15\",\n    \"leave_balance\": 30\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/employee",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"employee"
+					]
+				},
+				"description": "## Add Employee\n\nThis endpoint allows you to add a new employee to the system. It accepts a JSON payload containing the employee's details and returns a confirmation response upon successful addition.\n\n### Request\n\n- **Method:** POST\n    \n- **URL:** `http://127.0.0.1:5000/employee`\n    \n- **Content-Type:** application/json\n    \n\n#### Request Body Parameters\n\n| Key | Type | Description |\n| --- | --- | --- |\n| `name` | string | The name of the employee. |\n| `joining_date` | string | The date when the employee joins, formatted as YYYY-MM-DD. |\n| `leave_balance` | integer | The initial leave balance for the employee. |\n\n### Response\n\nOn a successful request, the API returns a JSON response with the following structure:\n\n- **Status Code:** 200\n    \n- **Content-Type:** application/json\n    \n\n#### Response Body\n\n| Key | Type | Description |\n| --- | --- | --- |\n| `employee_id` | integer | The unique identifier assigned to the newly added employee. |\n| `message` | string | A message indicating the status of the operation (usually empty on success). |\n\n### Example Response\n\n``` json\n{\n  \"employee_id\": 0,\n  \"message\": \"\"\n}\n\n ```\n\nThis response confirms that the employee has been successfully added, along with their unique identifier."
+			},
+			"response": [
+				{
+					"name": "add_new_employee",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sayali Datir\",\n    \"joining_date\": \"2025-08-15\",\n    \"leave_balance\": 30\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/employee",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.12.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 16 Aug 2025 02:47:00 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"employee_id\": 8,\n    \"message\": \"Employee added successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "approve_leave",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"status\": \"approved\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/approve-leave/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"approve-leave",
+						"2"
+					]
+				},
+				"description": "## Approve Leave Request\n\nThis endpoint allows you to approve a leave request for a specific leave ID. By sending a PUT request to the `/approve-leave/{id}` endpoint, you can update the status of the leave request identified by the provided leave ID.\n\n### Request\n\n- **Method**: PUT\n    \n- **URL**: `http://127.0.0.1:5000/approve-leave/{id}`\n    \n- **Path Parameter**:\n    \n    - `id` (integer): The unique identifier of the leave request you want to approve.\n        \n- **Request Body** (Raw JSON):\n    \n    - `status` (string): The status to be set for the leave request. To approve the leave, the value should be `\"approved\"`.\n        \n\n#### Example Request Body:\n\n``` json\n{\n  \"status\": \"approved\"\n}\n\n ```\n\n### Response\n\nThe response will be returned in JSON format and will include the following fields:\n\n- `leave_id` (integer): The ID of the leave request that was updated.\n    \n- `message` (string): A message indicating the result of the operation (may be empty).\n    \n- `status` (string): The current status of the leave request after the update (may be empty).\n    \n\n#### Example Response:\n\n``` json\n{\n  \"leave_id\": 0,\n  \"message\": \"\",\n  \"status\": \"\"\n}\n\n ```\n\n### Status Codes\n\n- **200 OK**: The leave request was successfully updated.\n    \n\nThis endpoint is useful for managing leave requests in your application, allowing users to approve leave with a simple API call. Ensure that the correct leave ID is provided in the URL and that the request body contains the appropriate status."
+			},
+			"response": [
+				{
+					"name": "approve_leave",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"status\": \"approved\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/approve-leave/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"approve-leave",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.12.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 16 Aug 2025 02:51:48 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "88"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"leave_id\": 2,\n    \"message\": \"Leave approved successfully\",\n    \"status\": \"APPROVED\"\n}"
+				}
+			]
+		},
+		{
+			"name": "check_leave_balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/leave-balance/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"leave-balance",
+						"2"
+					]
+				},
+				"description": "## Leave Balance Endpoint\n\nThis endpoint retrieves the leave balance for a specific user identified by their unique user ID.\n\n### Request\n\n- **Method:** GET\n    \n- **URL:** `http://127.0.0.1:5000/leave-balance/{user_id}`\n    \n- **Path Parameter:**\n    \n    - `user_id` (integer): The unique identifier for the user whose leave balance is being requested.\n        \n\n### Response\n\n- **Status Code:** 200 OK\n    \n- **Content-Type:** application/json\n    \n- **Response Body Format:**\n    \n    - The response will contain a JSON object with the following key:\n        \n        - `leave_balance` (integer): The total number of leave days remaining for the user.\n            \n\n#### Example Response\n\n``` json\n{\n  \"leave_balance\": 0\n}\n\n ```\n\nThis endpoint is useful for applications that need to display or manage user leave balances effectively."
+			},
+			"response": [
+				{
+					"name": "check_leave_balance",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/leave-balance/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"leave-balance",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.1.3 Python/3.12.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 16 Aug 2025 02:52:07 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"leave_balance\": 14\n}"
+				}
+			]
+		}
+	]
+}
